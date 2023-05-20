@@ -44,7 +44,8 @@ async function run() {
     const cursor = toysCollection.find();
     const result = await cursor.toArray();
     res.send(result);
-  });
+  }); 
+
   app.get("/toyByCategory/:category", async (req, res) => {
     const toysCategory = req.params.category;
     console.log(toysCategory);
