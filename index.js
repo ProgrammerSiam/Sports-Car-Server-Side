@@ -10,7 +10,6 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.tlwiikw.mongodb.net/?retryWrites=true&w=majority`;
 
-
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -20,18 +19,14 @@ const client = new MongoClient(uri, {
 });
 
 async function run() {
-
-
   await client.db("admin").command({ ping: 1 });
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
   const toysCollection = client.db("toysMarket").collection("toys_car");
 
-
   const indexKeys = { toys_name: 1, sub_category: 1 };
   const indexOptions = { name: "titleCategory" };
   const result = await toysCollection.createIndex(indexKeys, indexOptions);
- 
 
   app.get("/toys", async (req, res) => {
     const cursor = toysCollection.find().limit(20);
@@ -111,7 +106,6 @@ async function run() {
     const result = await toysCollection.updateOne(filter, updateDoc);
     res.send(result);
   });
-
 }
 run().catch(console.dir);
 
@@ -119,8 +113,6 @@ app.get("/", (req, res) => {
   res.send("Hello Toys Market");
 });
 
-
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(` app listening on port ${port}`);
 });
