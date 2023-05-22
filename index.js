@@ -113,11 +113,6 @@ async function run() {
     res.send(result);
   });
 
-  // }
-  // finally {
-  //     // Ensures that the client will close when you finish/error
-  //     // await client.close();
-  // }
 }
 run().catch(console.dir);
 
@@ -125,7 +120,7 @@ app.get("/", (req, res) => {
   res.send("Hello Toys Market");
 });
 
-// toysMarketData 4phbYiE5yF03LRJB
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
