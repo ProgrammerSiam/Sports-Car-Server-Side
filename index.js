@@ -10,7 +10,7 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.tlwiikw.mongodb.net/?retryWrites=true&w=majority`;
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -31,7 +31,7 @@ async function run() {
   const indexKeys = { toys_name: 1, sub_category: 1 };
   const indexOptions = { name: "titleCategory" };
   const result = await toysCollection.createIndex(indexKeys, indexOptions);
-  // console.log(result);
+ 
 
   app.get("/toys", async (req, res) => {
     const cursor = toysCollection.find().limit(20);
