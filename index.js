@@ -20,14 +20,13 @@ const client = new MongoClient(uri, {
 });
 
 async function run() {
-  // try {
-  //  client.connect();
+
 
   await client.db("admin").command({ ping: 1 });
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
   const toysCollection = client.db("toysMarket").collection("toys_car");
-  // const addedCollection = client.db('toysMarket').collection('addedToys');
+
 
   const indexKeys = { toys_name: 1, sub_category: 1 };
   const indexOptions = { name: "titleCategory" };
